@@ -45,7 +45,7 @@ public class Login : MonoBehaviour
         {
             BackendReturnObject loginResult = Backend.BMember.CustomLogin(id, pw);
 
-            // 로그인 성공시 채널목록으로 이동
+            // 로그인 성공시 메인으로 이동
             if (loginResult.IsSuccess())
             {
                 if (DoesNicknameExist())
