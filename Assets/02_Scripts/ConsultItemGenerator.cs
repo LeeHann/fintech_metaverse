@@ -9,7 +9,7 @@ public class ConsultItemGenerator : MonoBehaviour   // 버튼 생성기
 {
 	[Header("Admin")]
 	[SerializeField] private GameObject Btns;    // 운영자일 때 버튼을 생성할 수 있게 하는 패널 
-	[SerializeField] private GameObject Consult_ScrollView; // 편집 시 활성화
+	// [SerializeField] private GameObject Consult_ScrollView; // 편집 시 활성화
 
 	[Header("Instantiate")]
 	[SerializeField] private Transform consultContent;
@@ -33,7 +33,6 @@ public class ConsultItemGenerator : MonoBehaviour   // 버튼 생성기
 			if (game_id == "46fa2cf0-aced-11ec-b9a3-15234b658fd0")
 			{
 				Btns.SetActive(true);
-				Consult_ScrollView.SetActive(true);
 			}
 		});
 
@@ -74,7 +73,7 @@ public class ConsultItemGenerator : MonoBehaviour   // 버튼 생성기
 		Backend.GameData.Get("FAQ_catalog", where, (callback) =>
 		{
 			item.inDate = callback.GetInDate();
-			Debug.Log("inDate 삽입 완료 : " + item.inDate);
+			// Debug.Log("inDate 삽입 완료 : " + item.inDate);
 		});
 
 		// 참조값 초기화
@@ -101,6 +100,7 @@ public class ConsultItemGenerator : MonoBehaviour   // 버튼 생성기
 		BtnGenerate();
 	}
 
+#region Delete
     public void OnClickClose(Image delBtn)
     {
         deleteMode = false;
@@ -147,4 +147,17 @@ public class ConsultItemGenerator : MonoBehaviour   // 버튼 생성기
 			});
 		}
 	}
+#endregion
+    public void OnClickCloseView(Button FAQGen_CloseBtn)
+    {
+        FAQGen_CloseBtn.onClick.Invoke();
+        Backend.BMember.GetUserInfo((callback) =>
+		{
+			string game_id = callback.GetReturnValuetoJSON()["row"]["gamerId"].ToString();
+			if (game_id != "46fa2cf0-aced-11ec-b9a3-15234b658fd0")
+			{
+				Btns.SetActive(false);
+			}
+		});
+    }
 }

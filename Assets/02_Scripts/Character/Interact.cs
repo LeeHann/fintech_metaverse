@@ -20,7 +20,10 @@ public class Interact : MonoBehaviour
 
     private void Update() 
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GetInteraction();
+        }
     }
 
     public void GetInteraction()
@@ -35,6 +38,7 @@ public class Interact : MonoBehaviour
                 case "Consult": // Consultant 가까이 가면 Consult 패널 활성화
                     consultPanel.SetActive(true);
                     Cursor.lockState = CursorLockMode.None;
+                    
                     break;
                 
                 default:

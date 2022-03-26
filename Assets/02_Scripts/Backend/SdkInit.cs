@@ -46,7 +46,9 @@ public class SdkInit : MonoBehaviour
     {
         string id = "admin";
         string password = "admin";
-
+        // string id = "hann";
+        // string password = "0000";
+        
         var bro = Backend.BMember.CustomLogin(id, password);
         if (bro.IsSuccess())
         {
