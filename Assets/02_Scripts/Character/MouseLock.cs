@@ -9,7 +9,7 @@ public class MouseLock : MonoBehaviour
     float xRotation = 0f;
 
     private void Start() {
-        // Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update() {
@@ -17,7 +17,7 @@ public class MouseLock : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSesitivity * Time.deltaTime;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -45f, 45f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);

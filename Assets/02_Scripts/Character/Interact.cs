@@ -35,6 +35,7 @@ public class Interact : MonoBehaviour
             var target = hits[0].collider;
             switch (target.tag)
             {
+                // Cursor.lockState None 으로 바꾸기
                 case "Consult": // Consultant 가까이 가면 Consult 패널 활성화
                     consultPanel.SetActive(true);
                     Cursor.lockState = CursorLockMode.None;
