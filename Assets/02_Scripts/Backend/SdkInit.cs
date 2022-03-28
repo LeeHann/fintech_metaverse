@@ -21,7 +21,7 @@ public class SdkInit : MonoBehaviour
 
     private void Update() 
     {
-        Backend.AsyncPoll();
+        // Backend.AsyncPoll();
     }
 
     //초기화 성공 이후 버튼 등을 통해 함수 실행
