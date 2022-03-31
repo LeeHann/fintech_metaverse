@@ -8,7 +8,9 @@ public class Interact : MonoBehaviour
     public MouseLock mouseLock;
     public GameObject consultPanel;
     public GameObject videoPanel;
-
+    public GameObject exhibitPanel;
+    public GameObject buildingPanel;
+    public GameObject marketPanel;
 
     [Space(10f)]
     public float interactionDistance = 2f;
@@ -37,6 +39,7 @@ public class Interact : MonoBehaviour
             Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(hits[0].transform.position)) < currentSearchAngle / 2.0f)
         {
             var target = hits[0].collider;
+            Debug.Log(target.tag);
             switch (target.tag)
             {
                 case "Consult":
@@ -44,6 +47,15 @@ public class Interact : MonoBehaviour
                     break;
                 case "VideoKiosk":
                     videoPanel.SetActive(true);
+                    break;
+                case "Exhibit":
+                    exhibitPanel.SetActive(true);
+                    break;
+                case "BuildingKiosk":
+                    buildingPanel.SetActive(true);
+                    break;
+                case "market":
+                    marketPanel.SetActive(true);
                     break;
                 default:
                     break;
@@ -58,6 +70,9 @@ public class Interact : MonoBehaviour
             // interact panel inactivate
             if (consultPanel != null) consultPanel.SetActive(false);
             if (videoPanel != null) videoPanel.SetActive(false);
+            if (exhibitPanel != null) exhibitPanel.SetActive(false);
+            if (buildingPanel != null) buildingPanel.SetActive(false);
+            if (marketPanel != null) marketPanel.SetActive(false);
 
             // mouse state
             mouseLock.enabled = true;

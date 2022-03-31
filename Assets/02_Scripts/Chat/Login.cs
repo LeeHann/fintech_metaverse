@@ -50,7 +50,7 @@ public class Login : MonoBehaviour
             {
                 if (DoesNicknameExist())
                 {
-                    SceneManager.LoadScene("Main");
+                    SceneManager.LoadScene("Main2");
                 }
                 else
                 {
@@ -109,7 +109,7 @@ public class Login : MonoBehaviour
 		BackendReturnObject nicknameCreated = Backend.BMember.CreateNickname(nick);
 		if (nicknameCreated.IsSuccess())
 		{
-			SceneManager.LoadScene("Main");
+			SceneManager.LoadScene("Main2");
 		}
 		else
 		{
